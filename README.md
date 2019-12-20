@@ -1,19 +1,13 @@
-# Primary School Building
-
 <a href="https://www.usc.edu/"><img src="https://identity.usc.edu/files/2019/01/PrimShield-Word_SmallUse_CardOnTrans.png"/><a>
 
 
-# ACC2020
-Source code of ACC2020 simulation example
-
-
-The included code is an open-source sofware, originally developed by the [KIOS Research and Innovation Center of Excellence of the University of Cyprus](http://www.kios.ucy.ac.cy/).
-
+# # Primary School Building
+Source code of Primary School Building simulation example
 
 ## How to cite 
 
 ```
-@INPROCEEDINGS{LymperopoulosACC2020, 
+%@INPROCEEDINGS{LymperopoulosACC2020, 
 author={G. Lymperopoulos and P. M. Papadopoulos and Petros Ioannou and M. M. Polycarpou}, 
 booktitle={American Control Conference (ACC)}, 
 title={Distributed Adaptive Control of Air Handling Units for Interconnected
