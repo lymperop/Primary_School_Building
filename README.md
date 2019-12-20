@@ -1,6 +1,6 @@
 # Primary School Building
 
-<a href="https://www.usc.edu/"><img src="http://www.kios.ucy.ac.cy/templates/favourite/images/kios_logo_hover.png"/><a>
+<a href="https://www.usc.edu/"><img src="https://identity.usc.edu/files/2019/01/PrimShield-Word_SmallUse_CardOnTrans.png"/><a>
 
 
 # ACC2020
