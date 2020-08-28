@@ -1,0 +1,99 @@
+--------------------------------------------------------------------------------------------
+BuildingSimulationTool: Update the idf and matlab files to simulate fast and easily.
+--------------------------------------------------------------------------------------------
+
+!!! Correct character encoding is necessary !!!
+
+Tool location:
+
+The tool works for any directory. It will adjust the idfs and m-files that are in the folders "ePlus", "ePlusAd" and "Simulink", "SimulinkAd" in the same directory 
+where "BuildingSimulationTool.jar" is located. 
+==> The directory path should not have any gaps or invalid characters. myTool should be in the same directory
+==> as the folder, not inside them.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Elements:
+
+Define your files:
+Block 1: Path for energyplus.exe in your PC in the form "Path\energyplus" (no file extension). May not work for versions other than 9.1.0.
+Block 2: Name of idf file you want to work on (with file extension). You need to put it only once for both cases and no path is needed.
+Block 3: Name of weather file you need (with file extension). You need to put it only once for both cases and no path is needed.
+
+Define parameters to change:
+Block 4: Choose the zone you want to work on.
+Block 5: Choose the parameter you want to change.
+Block 6: Put the new value for the chosen parameter.
+
+Configure automatizations: 
+Block 7: x axis for mouse to open BCVTB
+Block 8: y axis for mouse to open BCVTB
+Block 9: x axis for mouse to run BCVTB
+Block 10: y axis for mouse to run BCVTB
+Block 11: Estimated wait time for one full simulation. Used for scheduling multiple simulations.
+==> READ NOTE 1
+
+Status:	 Information on whether the desired operations have been done.
+
+--------
+Buttons:
+--------
+
+Handle parameters:
+Show Current Value       : Shows the current value of the chosen parameter.
+Show All Values of Zone  : Show all basic values of one zone.
+Show Values for All Zones: Show a parameter value of all zones.
+Change Parameter         : Gives the new value to the chosen parameter in every place needed in the idf file. Modifies both cases simultaneously.
+Update JSON              : Generates new JSON file for both cases in their respective folder. IMPORTANT: VERIFY IT WORKS! WILL NOT WORK IF DIRECTORY IS INCOMPATIBLE!! HAVE CONFLICTS IF MULTIPLE E+ VERSIONS IN PC
+Delete Files             : Deletes all unnecessary files for next simulation.
+
+Run simulation:
+Run Full Simulation      : Run the full simulation. It updates the JSON file, deletes unnecessary files, and runs BCVTB, which has to be open. It may be used to simulate directly after parameter change. xRun and yRun should be configured.
+Open BCVTB               : Opens BCVTB and current "system.xml". xOpen and yOpen should be configured.
+Open and Run             : Opens BCVTB and runs a full simulation. It updates the JSON file and deletes unnecessary files.
+
+Schedule multiple simulations:
+Store Values             : Stores new values to schedule simulations. To schedule one simulation, select every parameter you want to change and input the desired value. Then press this button.
+			   Do it for as many parameters as you want to change. When you have put all desired parameters changes for one simulation, select "Simulation number" from Block 5 and press this button. 
+                           Repear for as many simulations as you want to schedule. This button creates a log of all parameter changes that you scheduled for each simulation in the same directory as the tool and 
+                           saves simulation results in corresponding "Results" folders in the same directory. 
+Empty Stack              : Re-initialize simulations scheduling. To schedule new simulations, press this button. If you don't press the button, previously scheduled simulations will run again.
+Run Multiple Times       : After scheduling all desired simulations, press this button to run them. 
+			   ==> IMPORTANT: You have to make sure that the new plots or windows from the simulations will not cover the "Run" button in BCVTB.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+---------------------
+Parameters to change:
+---------------------
+
+In idf:
+U         : Coil coefficient for selected zone
+A         : Coil surface for selected zone
+m_sa      : Air volume flow rate for selected zone
+BeginMonth: The month when the simulation begins
+EndMonth  : The month when the simulation ends
+BeginDay  : The day of the month when the simulation begins
+EndDay    : The day of the month when the simulation ends
+
+In BCVTB:
+NumberOfDays(BCVTB): Number of days that the simulation lasts
+
+In m-files:
+A_br_z   : A_z multiplier to create A_br_z
+A_br_sa  : A_sa multiplier to create A_br_sa
+A_br_c   : A_c multiplier to create A_br_c
+Gamma_z  : Adaptive gains for the zones (the same for all zones). Gamma has to be the same for all zones.
+Gamma_sa : Adaptive gains for supply air (the same for all). Gamma has to be the same for all zones.
+Gamma_c  : Adaptive gains for coils (the same for all). Gamma has to be the same for all zones.
+Zone_projection_bound      : Multiplier for projection bound for adaptive zone gains
+SupplyAir_projection_bound : Multiplier for projection bound for adaptive supply air gains
+Coil_projection_bound      : Multiplier for projection bound for adaptive coil gains
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Notes:
+
+1 - Buttons 4 and 5 require mouse calibration. For button 4, you have to put x and y (blocks 7 and 8, respectively), so that mouse lands on "File" option of BCTVB when open. 
+    For button 5, you have to put x and y (blocks 7 and 8, respectively), so that mouse lands on "Play" option of BCTVB\xml when open.
+2 - If the simulation exceeds the estimated wait time, the tool is going to check every minute to see if the simulation is over to move to the next one.
+3 - More 'parameters to change' can be easily added, depending on simulation needs.
