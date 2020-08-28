@@ -97,3 +97,4 @@ Notes:
     For button 5, you have to put x and y (blocks 7 and 8, respectively), so that mouse lands on "Play" option of BCTVB\xml when open.
 2 - If the simulation exceeds the estimated wait time, the tool is going to check every minute to see if the simulation is over to move to the next one.
 3 - More 'parameters to change' can be easily added, depending on simulation needs.
+4 - The main source file is "change_IDF".
