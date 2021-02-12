@@ -3,6 +3,7 @@
 
 # Primary School Building
 Source code of Primary School Building simulation example
+- Building Simulation Tool: Java application to facilitate simulations 
 
 <!--
 ## How to cite 
